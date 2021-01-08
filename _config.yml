@@ -1,1 +1,3 @@
-markdown: GFM
+syntax_highlighter: 'coderay'
+syntax_highlighter_opts:
+  default_lang: java
