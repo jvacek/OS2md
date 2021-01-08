@@ -20,7 +20,9 @@ Socket s = new Socket(ipaddress,port);
 ~~~ 
 
 ## Use wrapper classes (Scanner and PrintWriter) for text based communication 
+
 ## By creating sockets
+
 ~~~ java
 
 InputStream is = s.getInputStream();
@@ -30,7 +32,9 @@ PrinterWriter pw = new PrintWriter(os,true);
 ~~~
 
 ## Use wrapper classes (ObjectInputStream and ObjectOutputStream) for object based communication   
+
 ## By creating sockets
+
 ## Must create ObjectOutputStream before  ObjectInputstream
 
 ~~~ java
@@ -52,6 +56,7 @@ Person pers = (Person)o;
 ~~~
 
 ## When sending objects, the corresponding classes should be serialized
+
 ## Example 
 ~~~ java
 
