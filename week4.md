@@ -8,7 +8,7 @@ ServiceSocket ss = new ServerSocket(port);
 while(true)
 {
 Socket sc = ss.accept();
-Runnable r  = new CLientHandler(sc);
+Runnable r  = new ClientHandler(sc);
 Thread t = nre Thread(r);
 t.start();
 }
@@ -25,7 +25,7 @@ Socket s = new Socket(ipaddress,port);
 
 InputStream is = s.getInputStream();
 Scanner sc = new Scanner(is);
-OutputStream os = s.getOuputStream();
+OutputStream os = s.getOutputStream();
 PrinterWriter pw = new PrintWriter(os,true);
 ~~~
 
@@ -36,7 +36,7 @@ PrinterWriter pw = new PrintWriter(os,true);
 ~~~ java
 
 InputStream is = s.getInputStream();
-OutputStream os = s.getOuputStream();
+OutputStream os = s.getOutputStream();
 ObjectOutputStream oos = new ObjectOutputStream(os,true);
 ObjectInputStream  ois = new ObjectInputStream(is);
 
