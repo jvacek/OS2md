@@ -1,13 +1,13 @@
 build_pdf:
-  before_script:
-    # Download and install pandoc and kramdown before we begin
-    # pandoc does PDF, but requires pdflatex, which can be a ~500mb download
-    # so we go for kramdown, which handles PDF, but doesn't handle DOCX
-    - apt-get update -y
-    - apt-get install -y pandoc
-    - gem install kramdown
-    - gem install prawn
-    - gem install prawn-table
+  # before_script:
+  #   # Download and install pandoc and kramdown before we begin
+  #   # pandoc does PDF, but requires pdflatex, which can be a ~500mb download
+  #   # so we go for kramdown, which handles PDF, but doesn't handle DOCX
+  #   - apt-get update -y
+  #   - apt-get install -y pandoc
+  #   - gem install kramdown
+  #   - gem install prawn
+  #   - gem install prawn-table
   script:
     # Runs pandoc on all .md files in the repo and outputs them as PDF and DOCX
     - find . -name '*.md' -exec sh -c 'pandoc $0 -f markdown -t docx -o $0.docx' {} \;
