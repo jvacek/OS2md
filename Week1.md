@@ -2,7 +2,7 @@
 ## Thread pools
 Something to manage a lot of threads with that run until you shut them down
 
-```java
+~~~ java
 public class ThreadPoolExample {
 
   public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class ThreadPoolExample {
     pool.shutdown(); // or shutdownNow();
   }
 }
-```
+~~~
 
 - Single thread executor - pool of size 1\
 `ExecutorService pool = Executors.newSingleThreadExecutor();`
@@ -53,9 +53,9 @@ Summary:
 - Let a number of threads wait for each other\
 `CyclicBarrier cb = new CyclicBarrier(5);`
 - Suppose we have 5 threads that do the following:\
-```
+~~~
 ... // do a certain calculationcb.await();... // wrapping up
-```
+~~~
 - The first 4 threads will be blocked in `cb.await()`
 - As soon as the 5th arrives, all 5 continue
 ### Countdown Latch
@@ -64,7 +64,7 @@ Has a counter, and when 0 is reached all threads that were waiting are woken up
 - N tasks for that pool
 - main thread must wait until all N tasks are finished
 
-```java
+~~~ java
 class WorkerRunnable implements Runnable {
     CountDownLatch doneSignal;
     WorkerRunnable(CountDownLatch d) {
@@ -86,5 +86,4 @@ try {
     doneSignal.await();
 }
 catch (InterruptedException ex) {}
-```
-
+~~~
