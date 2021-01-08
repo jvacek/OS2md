@@ -26,6 +26,11 @@ If the condition is not satisfied, the condition will wait until it is satisfied
 
 When the condition is satisfied, something else will call `signal()` or `signalAll()`
 
+## Monitor
+
+A class that handles all of the synchronization issues
+
+<!-- TODO what exactly does this do -->
 
 ## Examples of both in use
 
