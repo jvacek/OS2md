@@ -52,7 +52,7 @@ Summary:
 
 ### Cyclic barrier
 
-![gif](images/cyclicbarrier.gif)
+![apng](images/cyclicbarrier.png)
 
 1. Let a number of threads wait for each other\
 `CyclicBarrier cb = new CyclicBarrier(5);`
@@ -69,7 +69,7 @@ cb.await();
 
 ### Countdown Latch
 
-![gif](images/countdownlatch.gif)
+![apng](images/countdownlatch.png)
 
 Has a counter, and when 0 is reached all threads that were waiting are woken up
 
