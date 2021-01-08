@@ -1,5 +1,7 @@
 # Week 1
+
 ## Thread pools
+
 Something to manage a lot of threads with that run until you shut them down
 
 ~~~ java
@@ -28,11 +30,14 @@ public class ThreadPoolExample {
   `ScheduledExecutorService pool = Executors.newScheduledThreadPool(size);`
 * Single scheduled thread pool – pool of size 1 for scheduled or repeated execution \
 `ScheduledExecutorService pool = Executors.newSingleThreadScheduledExecutor();`
+
 ## Synchronisers
+
 Tools to start and stop threads based on conditions
 Implemented examples [here](https://github.com/volkodavs/java-concurrency.git)
 
-Summary
+Summary:
+
 * **CyclicBarrier**:
   * Used to synchronize one group of similar threads
   * They all wait for each other
@@ -46,6 +51,7 @@ Summary
 
 
 ### Cyclic barrier
+
 ![gif](https://user-images.githubusercontent.com/4140597/31797681-81f57ca0-b527-11e7-83b6-5933e7627fed.gif)
 * Let a number of threads wait for each other\
 `CyclicBarrier cb = new CyclicBarrier(5);`
@@ -53,10 +59,15 @@ Summary
 ~~~
 ... // do a certain calculation cb.await(); ... // wrapping up
 ~~~
+
 * The first 4 threads will be blocked in `cb.await()`
 * As soon as the 5th arrives, all 5 continue. The 5th one also acts like a `notifyAll()`
+
+
 ### Countdown Latch
+
 Has a counter, and when 0 is reached all threads that were waiting are woken up
+
 * you have a thread pool
 * N tasks for that pool
 * main thread must wait until all N tasks are finished
