@@ -1,8 +1,15 @@
 # Week 2
 
+## Use of `if` versus `while`
+
+
+Use a `while` if your thread should go back to sleep in case it got woken up and the condition is not yet true because the call was for a different thread.
+
+Only use an `if` when you've got only one thread that would invoke it.
+
 ## Monitor
 
-A class responsible for synchronization
+A class responsible for synchronization. Allows multiple threads to enter the critical section.
 
 Features:
 
@@ -15,6 +22,10 @@ Features:
 * Instantiation
   * Usually singleton
   * Object is shared by all threads
+
+Only `enter` and `exit` functions are synchronised, not necessarily the functions which do the editing and enter the critical section.
+
+A note about interrupting threads: update waiting variable inside the `enter` methods. <!-- What does this mean ???? TODO slide 16 in OS2_week2 -->
 
 ## Reader-writer examples
 
@@ -50,14 +61,15 @@ public synchronized void enterReader()  throws InterruptedException {
     wait();  
   } 
   readersActive++; 
-            
 } 
 
 public synchronized void exitReader() { 
   readersActive--; 
-  notifyAll(); 
+  notifyAll();
+  // Should be notifyAll as you should try wake up writers first if any exist possibly
 }
 ~~~
+
 
 ### Writer part of monitor
 
@@ -72,6 +84,7 @@ public synchronized void enterWriter()  throws InterruptedException {
 }
 
 // exitWriter() similar to exitReader()
+// A simple notify should work, should not matter what you wake up
 
 ~~~
 
