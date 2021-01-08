@@ -20,7 +20,7 @@ try  {
 ~~~
 
 * How many ReentrantLocks do you need?
-  * In general, equal to the number of objects to which you synchronize.
+    * In general, equal to the number of objects to which you synchronize.
                 e.g. Synchronized methods only -> synchronize on this -> 1 lock
 
 
@@ -33,6 +33,10 @@ Used when a thread has a requirement before continuing
 If the condition is not satisfied, the condition will wait until it is satisfied through an `await()`
 
 When the condition is satisfied, something else will call `signal()` or `signalAll()`
+
+* How many Conditions do you need?
+  * Depends on what the threads are waiting for nr. of different, non mutually exclusive, boolean expressions for the wait
+
 
 ## Monitor
 

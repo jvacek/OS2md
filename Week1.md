@@ -54,7 +54,7 @@ Summary
 ... // do a certain calculation cb.await(); ... // wrapping up
 ~~~
 * The first 4 threads will be blocked in `cb.await()`
-* As soon as the 5th arrives, all 5 continue
+* As soon as the 5th arrives, all 5 continue. The 5th one also acts like a `notifyAll()`
 ### Countdown Latch
 Has a counter, and when 0 is reached all threads that were waiting are woken up
 * you have a thread pool
