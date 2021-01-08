@@ -2,6 +2,10 @@
 
 ## Reentrant lock
 
+Denotes a critical section
+
+An alternative to what you'd achieve when you use `synchronized` blocks.
+
 ~~~ java
 monLock.lock(); 
 try  {
@@ -13,8 +17,12 @@ try  {
     monLock.unlock();
 
 }
-
 ~~~
+
+* How many ReentrantLocks do you need?
+  * In general, equal to the number of objects to which you synchronize.
+                e.g. Synchronized methods only -> synchronize on this -> 1 lock
+
 
 ## Condition
 
