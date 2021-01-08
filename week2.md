@@ -25,9 +25,9 @@ These enter and exit functions needs to handle the `wait` status.
 General reader structure:
 ~~~ java
 while(true) { 
-    RW.enterReader(); 
-     // read dataset (CS) 
-    RW.exitReader(); 
+  RW.enterReader(); 
+  // read dataset (CS) 
+  RW.exitReader(); 
 }
 ~~~
 
@@ -77,9 +77,10 @@ Or if writers need precedence before readers...
 ~~~ java
 public synchronized void enterWriter()  throws InterruptedException { 
   while((writersActive != 0) || (writersWaiting > 0)){ 
-  readersWaiting++; 
-  wait(); 
-  readersWaiting--; 
+    readersWaiting++; 
+    wait(); 
+    readersWaiting--; 
+  }
 }
 
 // exitWriter() similar to exitReader()
