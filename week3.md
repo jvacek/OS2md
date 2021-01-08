@@ -18,18 +18,19 @@ try  {
 
 ## Condition
 
+This is basically like `wait()` , `notify()` and `notifyAll()` but in a class, and without `synchronized`
+
 Used when a thread has a requirement before continuing
 
 If the condition is not satisfied, the condition will wait until it is satisfied through an `await()`
 
 When the condition is satisfied, something else will call `signal()` or `signalAll()`
 
-This is basically like `wait()` , `notify()` and `notifyAll()`
 
 ## Examples of both in use
 
 ~~~ java
-// Lock monLock = new ReentrantLock(); // somewhere else
+// Some place else...
 Lock monLock = new ReentrantLock();
 Condition xPos = monLock.newCondition()
 
