@@ -54,15 +54,17 @@ Summary:
 
 ![gif](images/cyclicbarrier.gif)
 
-* Let a number of threads wait for each other\
+1. Let a number of threads wait for each other\
 `CyclicBarrier cb = new CyclicBarrier(5);`
-* Suppose we have 5 threads that do the following:\
-~~~
-... // do a certain calculation cb.await(); ... // wrapping up
+2. Suppose we have 5 threads that do the following:\
+~~~ java
+// do a certain calculation 
+cb.await(); 
+// wrapping up
 ~~~
 
-* The first 4 threads will be blocked in `cb.await()`
-* As soon as the 5th arrives, all 5 continue. The 5th one also acts like a `notifyAll()`
+3. The first 4 threads will be blocked in `cb.await()`
+4. As soon as the 5th arrives, all 5 continue. The 5th one also acts like a `notifyAll()`
 
 
 ### Countdown Latch
