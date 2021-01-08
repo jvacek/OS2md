@@ -15,7 +15,7 @@ If you want documents, there are three types of files are generated from each so
 * PDFs from `markdown-pdf` (sometimes a little buggy, but the code is indented right)
 * PDFs from `kramdown` (appended with a `-k` in the filename, code is not indented or syntax highlighted, something I'm working on)
 
-[**Download here**](-/jobs/artifacts/master/download?job=build_pdf)
+[**Download here**](https://git.fhict.nl/I418426/os2md/-/jobs/artifacts/master/download?job=build_pdf)
 
 <!-- 
 ## Office line breaks
