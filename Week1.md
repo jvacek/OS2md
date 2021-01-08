@@ -4,7 +4,6 @@ Something to manage a lot of threads with that run until you shut them down
 
 ~~~ java
 public class ThreadPoolExample {
-
     public static void main(String[] args) {
         // create the thread pool
         ExecutorService pool = Executors.newCachedThreadPool();
@@ -13,7 +12,6 @@ public class ThreadPoolExample {
         for (int i = 0; i < 5; i++) {
             pool.execute(new MyTask());
         }
-
         // shut down the pool
         pool.shutdown(); // or shutdownNow();
     }
@@ -53,7 +51,7 @@ Summary:
 `CyclicBarrier cb = new CyclicBarrier(5);`
 - Suppose we have 5 threads that do the following:\
 ~~~
-... // do a certain calculationcb.await();... // wrapping up
+... // do a certain calculation cb.await(); ... // wrapping up
 ~~~
 - The first 4 threads will be blocked in `cb.await()`
 - As soon as the 5th arrives, all 5 continue
