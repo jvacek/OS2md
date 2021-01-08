@@ -18,13 +18,15 @@ public class ThreadPoolExample {
 }
 ~~~
 
-* Single thread executor * pool of size 1 \
+* Single thread executor - pool of size 1 \
   `ExecutorService pool = Executors.newSingleThreadExecutor();`
-* Fixed thread executor * pool of fixed size \
+* Fixed thread executor - pool of fixed size \
   `ExecutorService pool = Executors.newFixedThreadPool(size);`
-* Cached thread pool * creates new threads when necessary; deletes unused threads after 60 sec `ExecutorService pool = Executors.newCachedThreadPool();`
-* Scheduled thread pool – fixed size pool for scheduled or repeated execution (after certain delay) `ScheduledExecutorService pool = Executors.newScheduledThreadPool(size);`
-* Single scheduled thread pool – pool of size 1 for scheduled or repeated execution 
+* Cached thread pool - creates new threads when necessary; deletes unused threads after 60 sec \
+  `ExecutorService pool = Executors.newCachedThreadPool();`
+* Scheduled thread pool – fixed size pool for scheduled or repeated execution (after certain delay) \
+  `ScheduledExecutorService pool = Executors.newScheduledThreadPool(size);`
+* Single scheduled thread pool – pool of size 1 for scheduled or repeated execution \
 `ScheduledExecutorService pool = Executors.newSingleThreadScheduledExecutor();`
 ## Synchronisers
 Tools to start and stop threads based on conditions
