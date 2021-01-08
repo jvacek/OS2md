@@ -5,19 +5,18 @@ Something to manage a lot of threads with that run until you shut them down
 ~~~ java
 public class ThreadPoolExample {
 
-  public static void main(String[] args) {
-    // create the thread pool
-    ExecutorService pool =
-                     Executors.newCachedThreadPool();
+    public static void main(String[] args) {
+        // create the thread pool
+        ExecutorService pool = Executors.newCachedThreadPool();
 
-    // run each task using a thread in the pool
-    for (int i = 0; i < 5; i++) {
-      pool.execute(new MyTask());
+        // run each task using a thread in the pool
+        for (int i = 0; i < 5; i++) {
+            pool.execute(new MyTask());
+        }
+
+        // shut down the pool
+        pool.shutdown(); // or shutdownNow();
     }
-
-    // shut down the pool
-    pool.shutdown(); // or shutdownNow();
-  }
 }
 ~~~
 
@@ -65,25 +64,24 @@ Has a counter, and when 0 is reached all threads that were waiting are woken up
 - main thread must wait until all N tasks are finished
 
 ~~~ java
-class WorkerRunnable implements Runnable {
-    CountDownLatch doneSignal;
+class WorkerRunnable implements Runnable {
+    CountDownLatch doneSignal;
     WorkerRunnable(CountDownLatch d) {
         doneSignal = d;
-    }
-    public void run() {
-        doWork();
-        doneSignal.countDown();
-    }
-}
-
-CountDownLatch doneSignal = new CountDownLatch(N);
-ExecutorService e = //...
-for (int i = 0; i < N; i++){
-    e.execute(new WorkerRunnable(doneSignal));
+    }
+    public void run() {
+        doWork();
+        doneSignal.countDown();
+    }
 }
 
-try {
-    doneSignal.await();
-}
-catch (InterruptedException ex) {}
+CountDownLatch doneSignal = new CountDownLatch(N);
+ExecutorService e = //...
+    for (int i = 0; i < N; i++) {
+        e.execute(new WorkerRunnable(doneSignal));
+    }
+
+try {
+    doneSignal.await();
+} catch (InterruptedException ex) {}
 ~~~
