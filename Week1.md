@@ -52,7 +52,8 @@ Summary:
 
 ### Cyclic barrier
 
-![gif](https://user-images.githubusercontent.com/4140597/31797681-81f57ca0-b527-11e7-83b6-5933e7627fed.gif)
+![gif](images/cyclicbarrier.gif)
+
 * Let a number of threads wait for each other\
 `CyclicBarrier cb = new CyclicBarrier(5);`
 * Suppose we have 5 threads that do the following:\
@@ -65,6 +66,8 @@ Summary:
 
 
 ### Countdown Latch
+
+![gif](images/countdownlatch.gif)
 
 Has a counter, and when 0 is reached all threads that were waiting are woken up
 
