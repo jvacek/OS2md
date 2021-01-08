@@ -5,6 +5,7 @@
 A class responsible for synchronization
 
 Features:
+
 * Contains all shared private variables
 * **DOES NOT** contain the dataset itself
 * Methods:
@@ -23,6 +24,7 @@ These enter and exit functions needs to handle the `wait` status.
 
 
 General reader structure:
+
 ~~~ java
 while(true) { 
   RW.enterReader(); 
@@ -32,6 +34,7 @@ while(true) {
 ~~~
 
 General writer structure:
+
 ~~~ java
 while(true) { 
   RW.enterWriter(); 
