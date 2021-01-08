@@ -6,7 +6,7 @@ Screw Microsoft office
 I just want some nice simple docs
 
 ## Office line breaks
-<!-- Don't change this one! --> Replace ``
+<!-- Leave this one! --> Replace ``
 
 with
 
