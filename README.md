@@ -4,3 +4,13 @@ Screw sharepoint
 Screw Microsoft office
 
 I just want some nice simple docs
+
+## Office line breaks
+Replace ` 
+`
+
+with
+
+```
+
+```
