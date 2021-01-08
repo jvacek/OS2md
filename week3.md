@@ -30,7 +30,7 @@ This is basically like `wait()` , `notify()` and `notifyAll()`
 
 ~~~ java
 // Lock monLock = new ReentrantLock(); // somewhere else
-Lock monLock = new ReentrantLock(); 
+Lock monLock = new ReentrantLock();
 Condition xPos = monLock.newCondition()
 
 public void m1() {
@@ -41,29 +41,26 @@ public void m1() {
             xPos.await();
         }
         // ......
-    }
-    finally {
+    } finally {
         monLock.unlock();
     }
 
 }
 
 public void m2() {
-  monLock.lock() 
-  try  
-  { 
+    monLock.lock()
+    try {
 
-    // ...... 
-    if (x > 0)  
-    { 
-      xPos.signal(); 
-    } 
+        // ...... 
+        if (x > 0) {
+            xPos.signal();
+        }
 
-  }  
-  finally  
-  { 
-    monLock.unlock(); 
-  }
+    } finally {
+
+        monLock.unlock();
+
+    }
 }
 
 ~~~
