@@ -13,6 +13,7 @@ build_pdf:
     - find . -name '*.md' -exec sh -c 'pandoc $0 -f markdown -t docx -o $0.docx' {} \;
     # - find . -name '*.md' -exec sh -c 'pandoc $0 -f markdown -t latex -o $0-p.pdf' {} \;
     # - find . -name '*.md' -exec sh -c 'pandoc $0 --pdf-engine=xelatex -o $0-px.pdf' {} \;
+    - find . -name '*.md' -exec sh -c 'markdown-pdf $0 -p "$(which phantomjs)"' {} \;
     - find . -name '*.md' -exec sh -c 'kramdown $0 --syntax_highlighter="rouge"  --output pdf > $0-k.pdf' {} \;
   artifacts:
     # Attach all untracked files (e.g. files that were recently created and not yet committed to git) as artifacts.
