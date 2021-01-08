@@ -1,5 +1,7 @@
 # Week 1
 ## Thread pools
+Something to manage a lot of threads with that run until you shut them down
+
 ```java
 public class ThreadPoolExample {
 
