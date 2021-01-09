@@ -69,7 +69,7 @@ cb.await();
 
 ### Countdown Latch
 
-![apng](images/countdownlatch.mp4)
+![apng](images/countdownlatch.gif)
 
 Has a counter, and when 0 is reached all threads that were waiting are woken up
 
