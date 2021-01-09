@@ -7,10 +7,10 @@
 ServiceSocket ss = new ServerSocket(port);
 while(true)
 {
-Socket sc = ss.accept();
-Runnable r  = new ClientHandler(sc);
-Thread t = nre Thread(r);
-t.start();
+    Socket sc = ss.accept();
+    Runnable r  = new ClientHandler(sc);
+    Thread t = nre Thread(r);
+    t.start();
 }
 ~~~ 
 
