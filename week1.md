@@ -5,6 +5,7 @@
 Something to manage a lot of threads with that run until you shut them down
 
 ~~~ java
+
 public class ThreadPoolExample {
     public static void main(String[] args) {
         // create the thread pool
@@ -18,6 +19,7 @@ public class ThreadPoolExample {
         pool.shutdown(); // or shutdownNow();
     }
 }
+
 ~~~
 
 * Single thread executor - pool of size 1 \
@@ -78,6 +80,7 @@ Has a counter, and when 0 is reached all threads that were waiting are woken up
 * main thread must wait until all N tasks are finished
 
 ~~~ java
+
 class WorkerRunnable implements Runnable {
     CountDownLatch doneSignal;
     WorkerRunnable(CountDownLatch d) {
@@ -98,4 +101,5 @@ ExecutorService e = //...
 try {
     doneSignal.await();
 } catch (InterruptedException ex) {}
+
 ~~~
