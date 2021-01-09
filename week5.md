@@ -47,6 +47,12 @@ Legend to graph:
 
 ### Reducing the graph
 
+1. Remove all non-blocked processes (ones where there are no requests left)
+2. Write down processes which returned into safe sequence
+3. Grant requests to some process if the resources requested are available
+4. go to step 1 if processes are left
+
+
 #### With the example above
 
 `p1` is able to continue and finish its work, so we assume it will finish.
@@ -54,7 +60,6 @@ When those two slots will finish, `p3` will grab the single free `r1` slot.
 Then `p3` will finish as all its necessary resources are satisfied.
 Then `p2` can take all the resources it needs
 
-1. 
 
 ## Dining philosophers problem
 
