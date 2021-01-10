@@ -28,15 +28,3 @@ There are three types of files are generated from each source script, use whiche
 * HTML through `makrdown(1)` (unstyled)
 
 [**You can download _only_ those here**](https://git.fhict.nl/I418426/os2md/-/jobs/artifacts/master/download?job=build_pdf)
-
-<!-- 
-## Office line breaks
-Replace ``
-
-with
-
-```
-
-```
-
--->
