@@ -1,11 +1,12 @@
 # Week 4
 
-## Network Sockets
 
-## Creating socket at server side
+
+## Sockets
+### Creating Server side
 ~~~ java
 ServiceSocket ss = new ServerSocket(port);
-while(true)
+while(true) // If we're expecting more than one connection, otherwise you can do everything on the same thread
 {
     Socket sc = ss.accept();
     Runnable r  = new ClientHandler(sc);
@@ -14,36 +15,56 @@ while(true)
 }
 ~~~ 
 
-##  Creating socket at client side
+### Creating Client side
 ~~~ java
 Socket s = new Socket(ipaddress,port);
 ~~~ 
 
-## Use wrapper classes (Scanner and PrintWriter) for text based communication 
 
-### By creating sockets
+### Closing sockets
+You generally close sockets after you're done like so
+
+~~~ java
+try {
+    // all your code
+}
+catch (Exception e){
+    // Handle any exception above
+}
+finally { // The socket needs to be closed even if exceptions are encountered
+    try{
+        if (socket != null){
+            socket.close();
+        }
+    }
+    catch (IOException e){
+        // Handle exception e
+    }
+}
+~~~
+
+
+## Text-based communication
+Use wrapper classes (`Scanner` and `PrintWriter`) for text based communication 
 
 ~~~ java
 InputStream is = s.getInputStream();
 Scanner sc = new Scanner(is);
+
 OutputStream os = s.getOutputStream();
 PrinterWriter pw = new PrintWriter(os,true);
 ~~~
 
-## Use wrapper classes (ObjectInputStream and ObjectOutputStream) for object based communication   
+## Object-based communication
+Use wrapper classes (`ObjectInputStream` and `ObjectOutputStream`) for object based communication   
 
-### By creating sockets
-
-## Must create ObjectOutputStream before  ObjectInputstream
+Must create ObjectOutputStream before  ObjectInputstream
 
 ~~~ java
-
 InputStream is = s.getInputStream();
 OutputStream os = s.getOutputStream();
 ObjectOutputStream oos = new ObjectOutputStream(os,true);
 ObjectInputStream  ois = new ObjectInputStream(is);
-
-
 ~~~
 
 ## Example of communication
@@ -54,12 +75,12 @@ Object o = ois.ReadObject();
 Person pers = (Person)o;
 ~~~
 
-## When sending objects, the corresponding classes should be serialized
+## Object rules
+Remember! When sending objects, the corresponding classes should be serialized
 
-## Example 
 ~~~ java
-
 public class Person implements Serializable
-{}
-
+{
+    //
+}
 ~~~
