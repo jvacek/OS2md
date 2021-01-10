@@ -15,7 +15,7 @@ I just want some nice simple docs
     - From @I337328
 
 ## How to use
-Clone this repo, or download the entire repo.
+Clone this repo, or [download the entire repo](https://git.fhict.nl/I418426/os2md/-/archive/master/os2md-master.zip).
 
 Use Visual Studio Code to browse and render the `.md` files.
 
