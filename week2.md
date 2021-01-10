@@ -85,7 +85,6 @@ public synchronized void enterWriter()  throws InterruptedException {
 
 // exitWriter() similar to exitReader()
 // A simple notify should work, should not matter what you wake up
-
 ~~~
 
 Or if writers need precedence before readers...
@@ -100,6 +99,5 @@ public synchronized void enterWriter()  throws InterruptedException {
 }
 
 // exitWriter() similar to exitReader()
-
 ~~~
 

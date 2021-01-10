@@ -9,13 +9,9 @@ An alternative to what you'd achieve when you use `synchronized` blocks.
 ~~~ java
 monLock.lock(); 
 try  {
-
     // Critical Section 
-
 } finally  {
-
     monLock.unlock();
-
 }
 ~~~
 
@@ -52,7 +48,6 @@ Lock monLock = new ReentrantLock();
 Condition xPos = monLock.newCondition()
 
 public void m1() {
-
     monLock.lock();
     try {
         while (!(x > 0)) {
@@ -68,16 +63,12 @@ public void m1() {
 public void m2() {
     monLock.lock()
     try {
-
         // ...... 
         if (x > 0) {
             xPos.signal();
         }
-
     } finally {
-
         monLock.unlock();
-
     }
 }
 
