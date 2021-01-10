@@ -10,7 +10,6 @@ public class ThreadPoolExample {
     public static void main(String[] args) {
         // create the thread pool
         ExecutorService pool = Executors.newCachedThreadPool();
-
         // run each task using a thread in the pool
         for (int i = 0; i < 5; i++) {
             pool.execute(new MyTask());
@@ -54,52 +53,80 @@ Summary:
 
 ### Cyclic barrier
 
+Ensures that a the amount of threads specified are all waiting and when the last needed one arrives, resumes all the threads that were waiting at once.
+
 ![apng](images/cyclicbarrier.gif)
 
-1. Let a number of threads wait for each other\
-`CyclicBarrier cb = new CyclicBarrier(5);`
-2. Suppose we have 5 threads that do the following:\
+#### Example implementation
+
+Create a cyclic barrier in your main-ish class outside of your runnable
 ~~~ java
-// do a certain calculation 
-cb.await(); 
-// wrapping up
+`CyclicBarrier cb = new CyclicBarrier(4);`
 ~~~
 
-3. The first 4 threads will be blocked in `cb.await()`
-4. As soon as the 5th arrives, all 5 continue. The 5th one also acts like a `notifyAll()`
-
+And then insie of your runnable, make sure to store the `cb` and then add the `cb.await()` wherever you need to wit for the `n`th or in this instance 4th thread.
+~~~ java
+class WorkerRunnable implements Runnable {
+    CyclicBarrier cb;
+    
+    WorkerRunnable(CyclicBarrier cb) {
+        doneSignal = cb;
+    }
+    
+    public void run() {
+        doWork();
+        cb.await; // <- This is where it's gonna get stuck until the 5th one starts waiting
+    }
+}
+~~~
 
 ### Countdown Latch
 
-![apng](images/countdownlatch.gif)
-
 Has a counter, and when 0 is reached all threads that were waiting are woken up
+
+![apng](images/countdownlatch.gif)
 
 * you have a thread pool
 * N tasks for that pool
 * main thread must wait until all N tasks are finished
 
+#### Example implementation
+Implement the countdown in your runnable
 ~~~ java
-
 class WorkerRunnable implements Runnable {
     CountDownLatch doneSignal;
+    
     WorkerRunnable(CountDownLatch d) {
         doneSignal = d;
     }
+    
     public void run() {
         doWork();
-        doneSignal.countDown();
+        doneSignal.countDown(); // <- the important bit here
     }
 }
+~~~
 
+Elsewhere in your code, usually the "main-ish" class
+
+~~~ java
 CountDownLatch doneSignal = new CountDownLatch(N);
-ExecutorService e = //...
-    for (int i = 0; i < N; i++) {
-        e.execute(new WorkerRunnable(doneSignal));
-    }
+ExecutorService e = //One of the Threadpools
 
+for (int i = 0; i < N; i++) {
+    e.execute(new WorkerRunnable(doneSignal));
+}
+~~~
+
+And in the place where you need 
+~~~ java
+// This goes wherever you need something to wait.
 try {
     doneSignal.await();
-} catch (InterruptedException ex) {}
+    // Do whatever you had to wait for
+}
+catch (InterruptedException ex) {
+  // handle exceptions
+}
 
 ~~~
