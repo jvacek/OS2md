@@ -82,3 +82,12 @@ public void m2() {
 }
 
 ~~~
+
+### General how-to
+- Identify what is being shared/synchronised / identify critical sections
+  - e.g. the container of paint
+  - Create a lock in the monitor for each shared object
+- Identify the necessary conditions
+  - e.g. by checking the number of different mutually non-exclusive conditions for the `while` statements
+  - Create a condition for each of these boolean expressions
+- Start making synchronisation
